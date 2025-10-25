@@ -1,19 +1,27 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+// src/index.tsx
 
+import React from 'react';
+// 1. IMPORTAMOS "createRoot"
+import ReactDOM from 'react-dom/client'; 
+
+import { BrowserRouter } from 'react-router-dom';
+import { TicketsProvider } from './context/TicketsContext';
+
+import App from './App';
+import './index.css';
+
+// 2. USAMOS LA SINTAXIS "createRoot" (DE REACT 18)
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
+// 3. USAMOS "root.render"
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <TicketsProvider>
+        <App />
+      </TicketsProvider>
+    </BrowserRouter>
   </React.StrictMode>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

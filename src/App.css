@@ -1,38 +1,304 @@
+/* src/App.css */
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+    Arial, sans-serif;
+  margin: 0;
+  background-color: #f4f7f6;
+  color: #333;
+}
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  padding: 20px;
   color: white;
+  margin-bottom: 24px;
 }
 
-.App-link {
-  color: #61dafb;
+.App-header h1 {
+  margin: 0;
+  font-size: 1.5rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Estilos para nuestro componente TicketList */
+.ticket-list-container {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  text-align: left;
+}
+
+.ticket-list-container h2 {
+  padding: 16px 24px;
+  border-bottom: 1px solid #eee;
+  margin: 0;
+}
+
+.ticket-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ticket-item {
+  padding: 16px 24px;
+  border-bottom: 1px solid #eee;
+}
+
+.ticket-item:last-child {
+  border-bottom: none;
+}
+
+.ticket-item strong {
+  color: #005a9c; /* Un azul corporativo */
+  font-size: 1.1rem;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.ticket-item p {
+  margin: 4px 0 8px 0;
+}
+
+.ticket-item span {
+  font-size: 0.9rem;
+  color: #555;
+  background-color: #f0f0f0;
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+
+/* Estilos para el status badge que haremos luego */
+.badge-pending { background-color: #fbeaea; color: #c93434; }
+.badge-in-progress { background-color: #fff8e1; color: #e6a23c; }
+.badge-completed { background-color: #e6f7f0; color: #008a4c; }
+
+/* src/App.css (añadir al final) */
+
+.ticket-form {
+  background-color: #fff;
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  margin-bottom: 24px;
+  text-align: left;
+}
+
+.ticket-form h3 {
+  margin-top: 0;
+  margin-bottom: 16px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 16px;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box; /* Importante para que el padding no rompa el ancho */
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.form-group textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.ticket-form button {
+  background-color: #007bff;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+.ticket-form button:hover {
+  background-color: #0056b3;
+}
+
+/* src/App.css (añadir al final) */
+
+.ticket-item button.btn-update {
+  display: inline-block;
+  margin-left: 16px;
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: #e6f7f0;
+  color: #008a4c;
+  border: 1px solid #008a4c;
+  border-radius: 4px;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.ticket-item button.btn-update:hover {
+  background-color: #008a4c;
+  color: #fff;
+}
+
+.ticket-item button.btn-update:disabled {
+  background-color: #f0f0f0;
+  color: #999;
+  border-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* src/App.css (añadir al final) */
+
+.ticket-item button.btn-delete {
+  display: inline-block;
+  margin-left: 8px; /* Un poco de espacio */
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: #fbeaea; /* Rojo pálido */
+  color: #c93434; /* Rojo oscuro */
+  border: 1px solid #c93434;
+  border-radius: 4px;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.ticket-item button.btn-delete:hover {
+  background-color: #c93434;
+  color: #fff;
+}
+
+/* src/App.css */
+
+.ticket-item {
+  padding: 16px 24px;
+  border-bottom: 1px solid #eee;
+  /* ¡Nuevo! Usamos Flexbox para alinear todo */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px; /* Espacio entre elementos */
+}
+
+.ticket-item:last-child {
+  border-bottom: none;
+}
+
+/* ¡Nuevo! El enlace que contiene el título y la descripción */
+.ticket-link {
+  flex-grow: 1; /* Hace que el enlace ocupe el espacio disponible */
+  text-decoration: none; /* Quita el subrayado */
+  color: inherit; /* Hereda el color de texto normal */
+  display: block;
+}
+
+.ticket-link strong {
+  color: #005a9c;
+  font-size: 1.1rem;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.ticket-link p {
+  margin: 4px 0 0 0;
+}
+
+/* ¡Nuevo! Contenedores para el info y los botones */
+.ticket-info {
+  flex-shrink: 0; /* No se encoge */
+  white-space: nowrap; /* Evita que se parta en dos líneas */
+}
+
+.ticket-info span {
+  font-size: 0.9rem;
+  color: #555;
+  background-color: #f0f0f0;
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+
+.ticket-actions {
+  flex-shrink: 0; /* No se encoge */
+  display: flex;
+  gap: 8px; /* Espacio entre botones */
+}
+
+/* ... (tus estilos .btn-update y .btn-delete no cambian) ... */
+/* src/App.css (añadir al final) */
+
+.ticket-detail {
+  max-width: 800px;
+  margin: 0 auto 24px auto;
+  padding: 24px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  text-align: left;
+}
+
+.ticket-detail h2 {
+  margin-top: 0;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 16px;
+  margin-bottom: 24px;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 24px;
+  font-weight: 600;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Dos columnas */
+  gap: 20px;
+}
+
+.detail-item strong {
+  display: block;
+  color: #555;
+  font-size: 0.9rem;
+  margin-bottom: 4px;
+}
+
+.detail-item span,
+.detail-item p {
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.detail-item.full-width {
+  grid-column: 1 / -1; /* Ocupa todo el ancho */
 }
