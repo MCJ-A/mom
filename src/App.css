@@ -302,3 +302,87 @@ main {
 .detail-item.full-width {
   grid-column: 1 / -1; /* Ocupa todo el ancho */
 }
+
+/* Esto significa: si el ancho de la ventana es 768px o menos... */
+@media (max-width: 768px) {
+  /* ...entonces aplica los estilos que pongamos aquí! */
+  .mi-clase {
+    background-color: red;
+  }
+}
+
+/* ============================================== */
+/* === SECCIÓN DE DISEÑO RESPONSIVO === */
+/* ============================================== */
+
+/* Usaremos 768px como nuestro "breakpoint"
+   (el punto de ruptura).
+   Todo lo que esté por debajo de este ancho se considera "móvil". */
+
+@media (max-width: 768px) {
+  
+  /* --- Ajustes Generales --- */
+  main {
+    /* Damos un poco de espacio en los lados en móvil */
+    padding: 0 10px;
+  }
+
+  .App-header h1 {
+    font-size: 1.25rem; /* Hacemos el título un poco más pequeño */
+  }
+
+  /* --- Arreglar el TicketItem (El más importante) --- */
+  .ticket-item {
+    /* ¡EL CAMBIO CLAVE! 
+       En escritorio era 'flex-direction: row' (implícito).
+       En móvil, lo cambiamos a 'column' para que se apilen. */
+    flex-direction: column;
+    
+    /* En lugar de alinear al centro, alineamos al inicio */
+    align-items: flex-start;
+    gap: 12px; /* Un poco de espacio entre los elementos apilados */
+  }
+  
+  /* Hacemos que cada parte del item ocupe todo el ancho */
+  .ticket-link,
+  .ticket-info,
+  .ticket-actions {
+    width: 100%;
+  }
+  
+  .ticket-info {
+    /* Hacemos que 'Prioridad' y 'Estado' se separen */
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .ticket-actions {
+    /* Hacemos que los botones ocupen el 50% cada uno */
+    display: flex;
+    gap: 12px;
+  }
+  .ticket-actions button {
+    flex-grow: 1; /* Crecen para ocupar el espacio */
+  }
+
+  /* --- Arreglar el Formulario de Tickets --- */
+  .ticket-form {
+    padding: 16px; /* Menos padding en móvil */
+  }
+
+  /* --- Arreglar la Página de Detalles --- */
+  .ticket-detail {
+    padding: 16px;
+  }
+
+  .detail-grid {
+    /* Cambiamos nuestro grid de 2 columnas a 1 columna */
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .detail-item.full-width {
+    /* Esto ya no es necesario, pero no hace daño */
+    grid-column: 1 / -1; 
+  }
+}
