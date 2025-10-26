@@ -5,7 +5,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 // 2. IMPORTAMOS NUESTRAS "PÁGINAS"
-import HomePage from './pages/HomePages';
+import HomePage from './pages/HomePage';
 import TicketDetailPage from './pages/TicketDetailPage';
 
 import './App.css';
