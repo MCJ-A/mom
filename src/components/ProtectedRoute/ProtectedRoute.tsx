@@ -1,7 +1,7 @@
 // src/components/ProtectedRoute.tsx
 import React from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
-import { useAuth } from '../src/context/AuthContext'; // Importamos nuestro hook
+import { useAuth } from '../../context/AuthContext'; // Importamos nuestro hook
 
 const ProtectedRoute = () => {
   // Obtenemos el estado de autenticación de nuestro contexto

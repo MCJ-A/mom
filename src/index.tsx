@@ -1,27 +1,30 @@
 // src/index.tsx
 
 import React from 'react';
-// 1. IMPORTAMOS "createRoot"
-import ReactDOM from 'react-dom/client'; 
+import ReactDOM from 'react-dom/client';
 
 import { BrowserRouter } from 'react-router-dom';
 import { TicketsProvider } from './context/TicketsContext';
+import { AuthProvider } from './context/AuthContext'; // <-- ¡NUEVA IMPORTACIÓN!
 
 import App from './App';
 import './index.css';
 
-// 2. USAMOS LA SINTAXIS "createRoot" (DE REACT 18)
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
-
-// 3. USAMOS "root.render"
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <TicketsProvider>
-        <App />
-      </TicketsProvider>
+      {/* Ahora tenemos DOS proveedores. 
+        El orden aquí no importa mucho, pero envolver TicketsProvider
+        con AuthProvider tiene sentido.
+      */}
+      <AuthProvider>
+        <TicketsProvider>
+          <App />
+        </TicketsProvider>
+      </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>
 );
