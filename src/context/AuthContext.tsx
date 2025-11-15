@@ -94,7 +94,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   // Ya no tiene la lógica de '!isLoading'.
   return (
     <AuthContext.Provider value={value}>
-      {children}
+      {children} 
     </AuthContext.Provider>
   );
 };
